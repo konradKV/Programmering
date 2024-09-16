@@ -26,3 +26,7 @@ a:active {
   p {
     color: red;
   } 
+
+  body {
+    background-image: url("index.html");
+  }
