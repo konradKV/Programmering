@@ -1,82 +1,67 @@
-
-/* unvisited link */
-a:link {
-  color: green;
+/* Global Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light gray background */
+  text-align: center; /* Center align text content */
+  color: #333; /* Darker text for better contrast */
 }
 
-/* visited link */
-a:visited {
-  color: green;
+/* Navigation Bar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333; /* Dark background for navigation */
 }
 
-/* mouse over link */
-a:hover {
-  color: rgb(181, 0, 242);
-  font-size: xx-large
+li {
+  display: inline-block;
+  padding: 14px 20px;
 }
 
-/* selected link */
-a:active {
-  color: yellow;
+li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 14px 20px;
+  transition: 0.3s; /* Smooth hover effect */
 }
 
-  h1 {
-    color: rgb(15, 15, 16);
-  }
-  p {
-    color: red;
-  } 
+li a:hover {
+  background-color: #575757;
+  color: #ffd700; /* Gold color on hover */
+  border-radius: 4px;
+}
 
-  body {
-    background-image: url("");
-  }
+/* Main Content */
+h1, h2 {
+  color: #2c3e50; /* Navy blue headings */
+}
 
+p {
+  color: #444; /* Dark gray for paragraphs */
+  font-size: 1.1em; /* Slightly larger text */
+  max-width: 800px;
+  margin: 20px auto; /* Center paragraphs */
+}
 
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to images */
+  margin: 20px auto;
+}
 
-  div {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: relative;
-    animation-name: example;
-    animation-duration: 4s;
-  }
-  
-  @keyframes example {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:red; left:0px; top:0px;}
-  }
+/* Sections Styling */
+section {
+  padding: 50px 0;
+  margin: 0 auto;
+}
 
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: #ddd;
-  }
-  
-  li a.active {
-    color: white;
-    background-color: #04AA6D;
-  }
+#home {
+  background-color: #ecf0f1;
