@@ -3,49 +3,48 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Light gray background */
-  text-align: center; /* Center align text content */
-  color: #333; /* Darker text for better contrast */
+  background-color: #f4f4f4;
+  text-align: center; 
+  color: #333; /
 }
 
-/* Navigation Bar */
+/* tool Bar */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333; /* Dark background for navigation */
-}
+  background-color: #333;}
 
 li {
   display: inline-block;
-  padding: 14px 20px;
+  padding: 14px 20px; /*toolbar størelse*/
 }
 
 li a {
   text-decoration: none;
-  color: white;
+  color: white; /*font på toolbar*/
   font-weight: bold;
   padding: 14px 20px;
-  transition: 0.3s; /* Smooth hover effect */
+  transition: 0.3s; 
 }
 
 li a:hover {
-  background-color: #575757;
-  color: #ffd700; /* Gold color on hover */
+  background-color: #545151;
+  color: #ffd700; /* farge på linker */
   border-radius: 4px;
 }
 
-/* Main Content */
+
 h1, h2 {
-  color: #2c3e50; /* Navy blue headings */
+  color: #2c3e50; /* farge på h1 og h2 tekst */
 }
 
 p {
-  color: #444; /* Dark gray for paragraphs */
-  font-size: 1.1em; /* Slightly larger text */
+  color: #444; /* farge på paragraph tekster */
+  font-size: 1.1em;  
   max-width: 800px;
-  margin: 20px auto; /* Center paragraphs */
+  margin: 20px auto; /* sentrerer*/
 }
 
 /* Images */
@@ -53,8 +52,8 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to images */
-  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* legger til en skygge på bilder */
+  margin: 10px auto;
 }
 
 /* Sections Styling */
@@ -65,4 +64,3 @@ section {
 
 #home {
   background-color: #ecf0f1;
-
