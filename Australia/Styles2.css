@@ -1,10 +1,15 @@
 /* General styles */
+
+*{
+    user-select: none;
+}
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    user-select: none;
 }
 
 /* Navigation styles */
@@ -51,7 +56,7 @@ li a:hover {
     color: white;
 }
 
-/* Full-screen hero section */
+/* hero*/
 #home {
     background-image: url('image1(1).jpg');
     background-size: cover;
@@ -91,7 +96,7 @@ li a:hover {
 }
 
 
-/* Grid system for content */
+/* Grids */
 .container {
     display: block; /* Single-column layout */
     max-width: 1000px;
@@ -121,3 +126,32 @@ p {
     margin: 0 auto;
 }
 
+/* Styling for the button */
+.button1 {
+    background-color: #3498db; 
+    color: white; 
+    border: none; 
+    padding: 12px 24px; 
+    font-size: 16px; 
+    font-weight: 600; 
+    border-radius: 6px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button1:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .button1:active {
+    background-color: #1f618d;
+    transform: translateY(0); 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  a {
+    text-decoration: none; 
+  }
