@@ -16,82 +16,93 @@
         <li><a href="Australia/Australia.html">Australia</a></li>
 
     </ul>
-        <div id="cookedContainer">
-            <button id="cookedButton" class="button1">Er du cooked?</button>
-            <p id="cookedText" style="display: none;"></p>
-            <img id="cookedImage" src="cooked.png" alt="Cooked" style="display: none; max-width: 100%; height: auto;">
-        </div>
-
-        <script>
-            document.getElementById('cookedButton').addEventListener('click', function() {
-                var isCookedChance = Math.random();
-                if (isCookedChance < 0.5) {
-                    document.getElementById('cookedText').textContent = 'DU ER COOKED';
-                    document.getElementById('cookedImage').style.display = 'block';
-                } else {
-                    document.getElementById('cookedText').textContent = 'DU ER IKKE COOKED';
-                    document.getElementById('cookedImage').style.display = 'none';
-                }
-                document.getElementById('cookedText').style.display = 'block';
-            });
-        </script>
-
-
-        <div id="cookieGame">
-            <button id="startCookieGame" class="button1">Start Cookie Clicker</button>
-            <div id="cookieGameContainer" style="display: none;">
-                <h2>Cookie Clicker</h2>
-                <p>Cookies: <span id="cookieCount">0</span></p>
-                <button id="cookieButton" class="button1">Klikk for cookie!</button>
-                <div id="upgrades">
-                    <h3>Oppgraderinger:</h3>
-                    <button id="autoClickerUpgrade" class="button1">Kjøp Auto-Clicker (Koster: 10 cookies)</button>
-                    <button id="multiplierUpgrade" class="button1">Kjøp Multiplier (Koster: 50 cookies)</button>
-                </div>
+        <style>
+            #cookie-clicker {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            #cookie {
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                transition: transform 0.1s;
+            }
+            #cookie:active {
+                transform: scale(0.95);
+            }
+            .upgrade-btn {
+                margin: 5px;
+                padding: 5px 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .upgrade-btn:disabled {
+                background-color: #cccccc;
+                cursor: not-allowed;
+            }
+        </style>
+        <div id="cookie-clicker">
+            <h2>Cookie Clicker</h2>
+            <p>Cookies: <span id="cookie-count">0</span></p>
+            <img id="cookie" src="cookie.jpeg" alt="Cookie" onclick="clickCookie()">
+            <div>
+                <button class="upgrade-btn" onclick="buyUpgrade(0)">Klikker (+1) - Kostnad: 10</button>
+                <button class="upgrade-btn" onclick="buyUpgrade(1)">Bestemor (+5) - Kostnad: 50</button>
+                <button class="upgrade-btn" onclick="buyUpgrade(2)">Fabrikk (+10) - Kostnad: 100</button>
+                <button class="upgrade-btn" onclick="buyUpgrade(3)">Gruve (+20) - Kostnad: 200</button>
             </div>
+            <p>Oppgraderinger kjøpt: <span id="upgrades-bought">0, 0, 0, 0</span></p>
+            <button class="upgrade-btn" onclick="rebirth()">Rebirth (2x multiplikator)</button>
+            <p>Rebirth multiplikator: <span id="rebirth-multiplier">1</span>x</p>
         </div>
 
         <script>
-            document.getElementById('startCookieGame').addEventListener('click', function() {
-                this.style.display = 'none';
-                document.getElementById('cookieGameContainer').style.display = 'block';
-            });
-
             let cookies = 0;
-            let autoClickers = 0;
-            let multiplier = 1;
+            let upgrades = [0, 0, 0, 0];
+            let upgradeCosts = [10, 50, 100, 200];
+            let upgradeValues = [1, 5, 10, 20];
+            let rebirthMultiplier = 1;
 
-            document.getElementById('cookieButton').addEventListener('click', function() {
-                cookies += multiplier;
-                updateCookieCount();
-            });
-
-            document.getElementById('autoClickerUpgrade').addEventListener('click', function() {
-                if (cookies >= 10) {
-                    cookies -= 10;
-                    autoClickers++;
-                    updateCookieCount();
-                }
-            });
-
-            document.getElementById('multiplierUpgrade').addEventListener('click', function() {
-                if (cookies >= 50) {
-                    cookies -= 50;
-                    multiplier *= 2;
-                    updateCookieCount();
-                }
-            });
-
-            function updateCookieCount() {
-                document.getElementById('cookieCount').textContent = cookies;
+            function updateDisplay() {
+                document.getElementById('cookie-count').textContent = Math.floor(cookies);
+                document.getElementById('upgrades-bought').textContent = upgrades.join(', ');
+                document.getElementById('rebirth-multiplier').textContent = rebirthMultiplier;
             }
 
-            setInterval(function() {
-                cookies += autoClickers * multiplier;
-                updateCookieCount();
+            function clickCookie() {
+                cookies += (1 + upgrades[0]) * rebirthMultiplier;
+                updateDisplay();
+            }
+
+            function buyUpgrade(index) {
+                if (cookies >= upgradeCosts[index]) {
+                    cookies -= upgradeCosts[index];
+                    upgrades[index]++;
+                    upgradeCosts[index] = Math.ceil(upgradeCosts[index] * 1.15);
+                    updateDisplay();
+                }
+            }
+
+            function rebirth() {
+                if (cookies >= 1000) {
+                    rebirthMultiplier *= 2;
+                    cookies = 0;
+                    upgrades = [0, 0, 0, 0];
+                    upgradeCosts = [10, 50, 100, 200];
+                    updateDisplay();
+                }
+            }
+
+            setInterval(() => {
+                cookies += (upgrades[1] * 5 + upgrades[2] * 10 + upgrades[3] * 20) * rebirthMultiplier;
+                updateDisplay();
             }, 1000);
         </script>
-
 
        
         </header>
