@@ -16,6 +16,25 @@
         <li><a href="Australia/Australia.html">Australia</a></li>
 
     </ul>
+        <div id="cookedContainer">
+            <button id="cookedButton" class="button1">Er du cooked?</button>
+            <p id="cookedText" style="display: none;"></p>
+            <img id="cookedImage" src="cooked.png" alt="Cooked" style="display: none; max-width: 100%; height: auto;">
+        </div>
+
+        <script>
+            document.getElementById('cookedButton').addEventListener('click', function() {
+                var isCookedChance = Math.random();
+                if (isCookedChance < 0.5) {
+                    document.getElementById('cookedText').textContent = 'DU ER COOKED';
+                    document.getElementById('cookedImage').style.display = 'block';
+                } else {
+                    document.getElementById('cookedText').textContent = 'DU ER IKKE COOKED';
+                    document.getElementById('cookedImage').style.display = 'none';
+                }
+                document.getElementById('cookedText').style.display = 'block';
+            });
+        </script>
 
 
         </header>
