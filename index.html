@@ -16,94 +16,101 @@
         <li><a href="Australia/Australia.html">Australia</a></li>
 
     </ul>
-        <style>
-            #cookie-clicker {
-                background-color: #f0f0f0;
-                padding: 20px;
-                border-radius: 10px;
-                margin-top: 20px;
-            }
-            #cookie {
-                width: 100px;
-                height: 100px;
-                cursor: pointer;
-                transition: transform 0.1s;
-            }
-            #cookie:active {
-                transform: scale(0.95);
-            }
-            .upgrade-btn {
-                margin: 5px;
-                padding: 5px 10px;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            .upgrade-btn:disabled {
-                background-color: #cccccc;
-                cursor: not-allowed;
-            }
-        </style>
-        <div id="cookie-clicker">
-            <h2>Cookie Clicker</h2>
-            <p>Cookies: <span id="cookie-count">0</span></p>
-            <img id="cookie" src="cookie.jpeg" alt="Cookie" onclick="clickCookie()">
-            <div>
-                <button class="upgrade-btn" onclick="buyUpgrade(0)">Klikker (+1) - Kostnad: 10</button>
-                <button class="upgrade-btn" onclick="buyUpgrade(1)">Bestemor (+5) - Kostnad: 50</button>
-                <button class="upgrade-btn" onclick="buyUpgrade(2)">Fabrikk (+10) - Kostnad: 100</button>
-                <button class="upgrade-btn" onclick="buyUpgrade(3)">Gruve (+20) - Kostnad: 200</button>
-            </div>
-            <p>Oppgraderinger kjøpt: <span id="upgrades-bought">0, 0, 0, 0</span></p>
-            <button class="upgrade-btn" onclick="rebirth()">Rebirth (2x multiplikator)</button>
-            <p>Rebirth multiplikator: <span id="rebirth-multiplier">1</span>x</p>
-        </div>
+        <section id="flappy-bird">
+            <h2>Spill Flappy Bird</h2>
+            <p>Prøv deg på en versjon av Flappy Bird-spillet som blir vanskeligere over tid!</p>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <button id="startButton" class="button1">Start spillet</button>
+            <button id="jumpButton" class="button1">Hopp</button>
+            <script>
+                const canvas = document.getElementById('gameCanvas');
+                const ctx = canvas.getContext('2d');
+                const startButton = document.getElementById('startButton');
+                const jumpButton = document.getElementById('jumpButton');
 
-        <script>
-            let cookies = 0;
-            let upgrades = [0, 0, 0, 0];
-            let upgradeCosts = [10, 50, 100, 200];
-            let upgradeValues = [1, 5, 10, 20];
-            let rebirthMultiplier = 1;
+                let bird = { x: 50, y: 200, velocity: 0 };
+                let pipes = [];
+                let score = 0;
+                let gameLoop;
+                let gameSpeed = 1;
 
-            function updateDisplay() {
-                document.getElementById('cookie-count').textContent = Math.floor(cookies);
-                document.getElementById('upgrades-bought').textContent = upgrades.join(', ');
-                document.getElementById('rebirth-multiplier').textContent = rebirthMultiplier;
-            }
-
-            function clickCookie() {
-                cookies += (1 + upgrades[0]) * rebirthMultiplier;
-                updateDisplay();
-            }
-
-            function buyUpgrade(index) {
-                if (cookies >= upgradeCosts[index]) {
-                    cookies -= upgradeCosts[index];
-                    upgrades[index]++;
-                    upgradeCosts[index] = Math.ceil(upgradeCosts[index] * 1.15);
-                    updateDisplay();
+                function drawBird() {
+                    ctx.fillStyle = '#FFD700';
+                    ctx.beginPath();
+                    ctx.arc(bird.x, bird.y, 20, 0, Math.PI * 2);
+                    ctx.fill();
                 }
-            }
 
-            function rebirth() {
-                if (cookies >= 1000) {
-                    rebirthMultiplier *= 2;
-                    cookies = 0;
-                    upgrades = [0, 0, 0, 0];
-                    upgradeCosts = [10, 50, 100, 200];
-                    updateDisplay();
+                function drawPipes() {
+                    ctx.fillStyle = '#00FF00';
+                    pipes.forEach(pipe => {
+                        ctx.fillRect(pipe.x, 0, 50, pipe.top);
+                        ctx.fillRect(pipe.x, pipe.bottom, 50, canvas.height - pipe.bottom);
+                    });
                 }
-            }
 
-            setInterval(() => {
-                cookies += (upgrades[1] * 5 + upgrades[2] * 10 + upgrades[3] * 20) * rebirthMultiplier;
-                updateDisplay();
-            }, 1000);
-        </script>
+                function updateGame() {
+                    bird.velocity += 0.5;
+                    bird.y += bird.velocity;
 
+                    if (pipes.length === 0 || pipes[pipes.length - 1].x < 250) {
+                        let gap = 150;
+                        let top = Math.random() * (canvas.height - gap);
+                        pipes.push({ x: canvas.width, top: top, bottom: top + gap });
+                    }
+
+                    pipes.forEach(pipe => {
+                        pipe.x -= 2 * gameSpeed;
+
+                        if (bird.x + 20 > pipe.x && bird.x - 20 < pipe.x + 50) {
+                            if (bird.y - 20 < pipe.top || bird.y + 20 > pipe.bottom) {
+                                clearInterval(gameLoop);
+                                alert('Spillet er over! Din poengsum: ' + score);
+                            }
+                        }
+
+                        if (pipe.x + 50 < bird.x && !pipe.passed) {
+                            score++;
+                            pipe.passed = true;
+                            gameSpeed += 0.05; // Øk hastigheten for hver poeng
+                        }
+                    });
+
+                    pipes = pipes.filter(pipe => pipe.x > -50);
+
+                    if (bird.y > canvas.height || bird.y < 0) {
+                        clearInterval(gameLoop);
+                        alert('Spillet er over! Din poengsum: ' + score);
+                    }
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawBird();
+                    drawPipes();
+
+                    ctx.fillStyle = '#000';
+                    ctx.font = '24px Arial';
+                    ctx.fillText('Poeng: ' + score, 10, 30);
+                }
+
+                function jump() {
+                    bird.velocity = -8;
+                }
+
+                startButton.addEventListener('click', () => {
+                    bird = { x: 50, y: 200, velocity: 0 };
+                    pipes = [];
+                    score = 0;
+                    gameSpeed = 1;
+                    gameLoop = setInterval(updateGame, 20);
+                    canvas.focus();
+                });
+
+                jumpButton.addEventListener('click', jump);
+                document.addEventListener('keydown', event => {
+                    if (event.code === 'Space') jump();
+                });
+            </script>
+        </section>
        
         </header>
 
