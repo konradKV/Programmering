@@ -1,4 +1,4 @@
-/* Global Styling */
+
 
 *{
   user-select: none;
@@ -60,11 +60,24 @@ img {
   margin: 10px auto;
 }
 
-/* Sections Styling */
-section {
-  padding: 50px 0;
+
+/* Grids */
+.container {
+  display: block; /* Single-column layout */
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 50px 20px;
 }
+
+
+section {
+  padding: 50px 20px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 #home {
   background-color: #ecf0f1;
@@ -98,4 +111,26 @@ section {
 
 a {
   text-decoration: none; 
+}
+
+
+/* Full-screen hero section */
+#home {
+  background-image: url("background\ 1.avif");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem; 
+  text-align: center; 
+  color: #333; 
+  font-weight: bold; 
 }
