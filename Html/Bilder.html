@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../Styles.css">
+    <title>Bildegalleri</title>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="../index.html">Tilbake</a></li>
+    </ul>
+
+    <div class="bildestyling">
+        <img src="../Bildeserie 1.png" alt="Bilde 1">
+        <img src="../Bildeserie 2.jpg" alt="Bilde 2">
+        <img src="../Bildeserie 3.jpg" alt="Bilde 3">
+        <img src="../Bildeserie 4.jpg" alt="Bilde 4">
+        <img src="../Bildeserie 5.jpg" alt="Bilde 5">
+    </div>
+
+    <style>
+        .bildestyling {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .bildestyling img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .bildestyling img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</body>
+</html>
