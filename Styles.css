@@ -1,6 +1,4 @@
-
-
-*{
+* {
   user-select: none;
 }
 body {
@@ -8,47 +6,48 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
-  text-align: center; 
-  color: #333; /
+  text-align: center;
+  color: #333;
 }
 
-/* tool Bar */
+/* Tool Bar */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;}
+  background-color: #333;
+}
 
 li {
   display: inline-block;
-  padding: 14px 20px; /*toolbar størelse*/
+  padding: 14px 20px;
 }
 
 li a {
   text-decoration: none;
-  color: white; /*font på toolbar*/
+  color: white;
   font-weight: bold;
   padding: 14px 20px;
-  transition: 0.3s; 
+  transition: 0.3s;
 }
 
 li a:hover {
   background-color: #545151;
-  color: #ffd700; /* farge på linker */
+  color: #ffd700;
   border-radius: 4px;
 }
 
-
 h1, h2 {
-  color: #2c3e50; /* farge på h1 og h2 tekst */
+  color: #2c3e50;
 }
 
 p {
-  color: #444; /* farge på paragraph tekster */
-  font-size: 1.1em;  
-  max-width: 800px;
-  margin: 20px auto; /* sentrerer*/
+  color: #444;
+  font-size: 1em;
+  line-height: 1.5;
+  max-width: 300px; /* Narrower text width for sections */
+  margin: 10px auto;
 }
 
 /* Images */
@@ -56,28 +55,30 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* legger til en skygge på bilder */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px auto;
 }
 
-
-/* Grids */
+/* Horizontal Grids */
 .container {
-  display: block; /* Single-column layout */
+  display: flex; /* Flex layout to arrange sections side-by-side */
+  flex-wrap: wrap; /* Wrap sections if the screen is too small */
+  justify-content: space-between; /* Space between sections */
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px 20px;
+  padding: 20px 10px;
+  gap: 20px; /* Space between sections */
 }
-
 
 section {
-  padding: 50px 20px;
+  flex: 1 1 calc(33.333% - 20px); /* 3 sections per row, adjust as needed */
   background-color: white;
-  border-radius: 10px;
-  margin-bottom: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  min-width: 250px; /* Ensures sections don't shrink too much */
 }
-
 
 #home {
   background-color: #ecf0f1;
@@ -85,41 +86,40 @@ section {
 
 /* Styling for the button */
 .button1 {
-  background-color: #3498db; 
-  color: white; 
-  border: none; 
-  padding: 12px 24px; 
-  font-size: 16px; 
-  font-weight: 600; 
-  border-radius: 6px; 
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button1:hover {
   background-color: #2980b9;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .button1:active {
   background-color: #1f618d;
-  transform: translateY(0); 
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+  transform: translateY(0);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
 }
-
 
 /* Full-screen hero section */
 #home {
   background-image: url("background\ 1.avif");
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
   display: flex;
   justify-content: center;
@@ -128,9 +128,9 @@ a {
 }
 
 header h1 {
-  font-size: 2.5rem;
-  margin-top: 2rem; 
-  text-align: center; 
-  color: #333; 
-  font-weight: bold; 
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
 }
