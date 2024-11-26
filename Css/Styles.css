@@ -116,7 +116,7 @@ a {
 
 /* Full-screen hero section */
 #home {
-  background-image: url("background\ 1.avif");
+  background-image: url("../Bilder/background\ 1.avif");
   background-size: cover;
   background-position: center;
   min-height: 90vh;
