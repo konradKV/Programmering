@@ -126,7 +126,7 @@ a {
   color: white; /* Sets the text color */
 }
 
-header h1 {
+h1 {
   font-size: 4rem; /* Sets the font size of the header */
   margin-top: 1.5rem; /* Adds margin top to the header */
   text-align: center; /* Centers the text horizontally */
