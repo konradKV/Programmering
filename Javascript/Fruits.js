@@ -1,4 +1,10 @@
-const fruits = ['eple', 'banan', 'appelsin'];
-console.log(fruits[0]);
-console.log(fruits[fruits.length - 1]);
+console.log(2 + "2");
 
+
+console.log(2 - "2");
+
+
+console.log("5" * 3);
+
+
+console.log("10" / "2");
