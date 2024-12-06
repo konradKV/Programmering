@@ -5,9 +5,11 @@
     <title>Bildegalleri</title>
 </head>
 <body>
+    <div class = navbar>
     <ul>
-        <li><a class="active" href="../index.html">Tilbake</a></li>
+        <a class="active" href="../index.html">Tilbake</a>
     </ul>
+</div>
 
     <div class="bildestyling">
         <img src="../Bilder/Bildeserie 1.png"" alt="Bilde 1">
@@ -18,25 +20,7 @@
     </div>
 
     <style>
-        .bildestyling {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
 
-        .bildestyling img {
-            max-width: 300px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .bildestyling img:hover {
-            transform: scale(1.05);
-        }
     </style>
 </body>
 </html>
