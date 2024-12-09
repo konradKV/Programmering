@@ -1,23 +1,13 @@
-function heiNavn() {
-  let navn = prompt("Hva heter du?");
-  alert("Hei " + navn + " håper du liker nettsiden min!");
-}
+let a = [1, 2, 3, 4, 6];
 
+function kul(s){
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.dropdown').forEach(dropdown => {
-      dropdown.addEventListener('click', function () {
-          const content = this.querySelector('.dropdown-content');
-          content.style.display = content.style.display === 'block' ? 'none' : 'block';
-      });
-  });
+b = ‘’’’
 
-  // Close dropdowns when clicking outside
-  window.addEventListener('click', function (e) {
-      if (!e.target.matches('.dropbtn')) {
-          document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-              dropdown.style.display = 'none';
-          });
-      }
-  });
-});
+for (let i = 0; i < s.length; i+=2){
+
+b = b + a[i];}
+
+return b
+
+} console.log(kul(s))
