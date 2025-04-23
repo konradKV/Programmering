@@ -1,9 +1,13 @@
+let a = [1, 2, 3, 4, 6];
 
-document.getElementById("button1").addEventListener("click", playSound);
+function kul(s){
 
-function playSound() {
-  const audio = new Audio("bilder/musikk.webm");
-  audio.play().catch(error => {
-    console.error("Error playing audio:", error);
-  });
-}
+b = ‘’’’
+
+for (let i = 0; i < s.length; i+=2){
+
+b = b + a[i];}
+
+return b
+
+} console.log(kul(s))
